@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>NEW</h1>
+  <form action="{% url 'articles:create' %}" method="GET">
+    <label for="title">TITLE: </label>
+    <input type="text" class="form-control w-50" id="title" name="title">
+    <label for="textarea">CONTENT: </label>
+    <textarea class="form-control w-50" id="textarea" rows="3" name='content'></textarea>
+    <button type="submit" class="btn btn-primary mt-2">작성</button>
+  </form>
+  <a href="{% url 'articles:index' %}">BACK</a>
+
+{% endblock content %}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for accounts_user in accounts_users %}
+    <h2>유저이름: {{ accounts_user }}</h2> <br>
+{% endfor %}
+    
+{% endblock content %}

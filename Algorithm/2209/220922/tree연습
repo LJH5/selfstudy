@@ -1,0 +1,39 @@
+import sys
+sys.stdin = open('input.txt', 'r')
+
+def preorder(n):                # 전위 순회
+    if n:                       # 노드의 번호는 1번부터 시작
+        print(n, end=' ')       
+        preorder(left_ch[n])    # 왼쪽 자식
+        preorder(right_ch[n])   # 오른쪽 자식
+
+def inorder(n):                 # 중위 순회
+    if n:                       # 노드의 번호는 1번부터 시작
+        preorder(left_ch[n])    # 왼쪽 자식
+        print(n, end=' ')       
+        preorder(right_ch[n])   # 오른쪽 자식
+
+def postorder(n):               # 후위 순회
+    if n:                       # 노드의 번호는 1번부터 시작
+        preorder(left_ch[n])    # 왼쪽 자식
+        preorder(right_ch[n])   # 오른쪽 자식
+        print(n, end=' ')       
+
+V = int(input())        # V는 노드의 수
+arr = list(map(int, input().split()))
+E = V-1                 # E는 간선의 개수
+left_ch = [0]*(V+1)     # 인덱스는 노드의 번호, 0번 인덱스는 사용x
+right_ch = [0]*(V+1)
+
+for i in range(E):
+    p, c = arr[2*i], arr[2*i+1]
+    if  left_ch[p] == 0:
+        left_ch[p] = c
+    else:
+        right_ch[p] = c
+
+preorder(1)     # 루트노드(인덱스 1번)부터 시작
+print()
+inorder(1)
+print()
+postorder(1)

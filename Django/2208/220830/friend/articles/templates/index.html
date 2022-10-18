@@ -1,0 +1,24 @@
+{% extends 'base.html' %} <!-- 이것은 무조건 맨 위에 있어야 한다 -->
+
+{% block content %}
+
+    <h2>index</h2>
+    {% comment %} <h1>index</h1>
+    <h2>{{ name }}님 환영합니다.</h2>
+    <hr>
+    <h2>전체음식: {{ foods }} </h2>
+    <h2>첫번째: {{ foods.0 }}</h2>
+    <h2>사는 도시: {{ address.city }}</h2>
+    <h2>랜덤한 숫자: {{ pick }}</h2> {% endcomment %}
+    <h3>{{ foods|join:', '}}</h3>
+
+    {% for food in foods %}
+        <p>{{ food }}</p>
+        <p>{{ food|length }}</p>
+    {% endfor %}
+
+    {% if '피자' in foods %}
+        <p>오늘 피자 먹어?</p>
+    {% endif %}
+
+{% endblock content %}

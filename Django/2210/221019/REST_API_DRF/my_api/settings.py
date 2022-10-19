@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@$8x-(6upil1k&!fs3p^+_uk@)$yi)-hz-nu=634c9x6=69l06'
+SECRET_KEY = 'django-insecure-0y6ox&ul+%ez4^d387%iu_$1p&f7t9yg)2u13)45n==b@tdbq!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'articles',
+    'django_extensions',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -93,7 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'UTC'
 

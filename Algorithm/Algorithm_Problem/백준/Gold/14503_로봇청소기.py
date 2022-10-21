@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('../input.txt')
 # 청소하는 영역의 개수를 구하라?
 # 빈칸은 0, 벽은 1
 # r은 북쪽으로부터 떨어진 칸의 개수, c는 서쪽으로 부터 떨어진 칸의 개수

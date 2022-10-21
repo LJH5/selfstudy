@@ -1,3 +1,4 @@
+# 양 울타리
 from collections import deque
 # r: 9 c: 12
 # r*c 행렬

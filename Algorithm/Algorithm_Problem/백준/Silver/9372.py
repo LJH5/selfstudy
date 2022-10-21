@@ -1,3 +1,4 @@
+# 상근이의 여행
 def dfs(now):
     global result
     if now not in visited:
@@ -7,6 +8,7 @@ def dfs(now):
         if des not in visited:
             result += 1
             dfs(des)
+
 
 for tc in range(int(input())):
     N, M = map(int, input().split())

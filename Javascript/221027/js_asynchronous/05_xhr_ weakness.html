@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const get = function (url) {
+      const xhr = new XMLHttpRequest()
+      xhr.open("GET", url)
+      xhr.send()
+
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          return JSON.parse(xhr.response)
+        } else {
+          console.error("Error", xhr.status, xhr.statusText)
+        }
+      }
+    }
+
+    const url = "https://jsonplaceholder.typicode.com/todos/1"
+    const response = get(url)
+
+    console.log(response) // undefined (응답이 오기 전에 실행 컨텍스트가 끝나버림)
+  </script>
+</body>
+
+</html>

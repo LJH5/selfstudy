@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const get = function (url, callback) {
+      const xhr = new XMLHttpRequest()
+      xhr.open("GET", url)
+      xhr.send()
+
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          callback(JSON.parse(xhr.response))
+        } else {
+          console.error("Error", xhr.status, xhr.statusText)
+        }
+      }
+    }
+
+    const url = "https://jsonplaceholder.typicode.com"
+
+    get(`${url}/posts/1`, function (response) {
+      const userId = response.userId
+
+      // 순서 보장을 위해 콜백을 계속 넣을 수 밖에 없음
+      get(`${url}/users/${userId}`, function (response) {
+        console.log(response)
+      })
+    })
+  </script>
+</body>
+
+</html>

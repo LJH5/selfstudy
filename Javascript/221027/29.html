@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn {
+      color: red;
+      background: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <h2>자동카운터</h2>
+  <p class="p2">0</p>
+
+  <h2 id="color">색상변환</h2>
+  <label for="change-color">원하는 색상을 입력하세요:</label>
+  <input type="text" id="change-color">
+
+  <!-- 자식 요소 추가 -->
+  <ul class="parent">
+    <li class="one">1</li>
+    <li class="two">2</li>
+    <li class="three">3</li>
+  </ul>
+
+  <button class="btn">색상을 반전</button>
+  <script>
+    const pTag = document.querySelector('.p2')
+    const autoPluse = function() {
+      let autoCnt = parseInt(pTag.innerText)
+      if (autoCnt <= 29) {
+        autoCnt += 1
+        pTag.innerText = autoCnt
+      } else {
+        clearInterval(interval)
+      }
+    }
+    let interval = setInterval(autoPluse, 1000)
+
+    const colorInput = document.querySelector('#change-color')
+    const changeColor = function(event) {
+      const colorTag = document.querySelector('#color')
+      colorTag.style.color = event.target.value
+    }
+    colorInput.addEventListener('input', changeColor)
+
+    const ulTag = document.querySelector('.parent')
+    const li0 = document.createElement('li')
+    li0.innerText = '첫번째'
+    ulTag.prepend(li0)
+
+    const li2 = document.querySelector('.two')
+    const liLast = document.createElement('li')
+    const liLast2 = document.createElement('li')
+    liLast.innerText = '김진희'
+    liLast2.innerText = '옷이 왜 그래?'
+    // li2.before(liLast)
+    // li2.after(liLast2)
+    ulTag.append(liLast, liLast2, '선보러 가요?')
+
+    const btnTag = document.querySelector('.btn')
+    btnTag.addEventListener('click', function(event) {
+      this.classList.toggle('btn')
+      
+    })
+  </script>
+</body>
+</html>

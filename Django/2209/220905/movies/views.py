@@ -8,6 +8,8 @@ def index(request):
 
 def new(request):
     form = MovieForm()
+    print('==========================')
+    print(form)
     context = {
         'form': form,
 
@@ -22,7 +24,7 @@ def create(request):
 
     movie = MovieForm(
         title = title,
-        audience =  audience,
+        audience = audience,
         genre = genre,
         decription = decription,
 

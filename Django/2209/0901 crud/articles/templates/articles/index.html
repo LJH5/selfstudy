@@ -8,8 +8,8 @@
     <p>글 내용 : {{ article.content }}</p>
     <a href="{% url 'articles:detail' article.pk %}">[detail]</a>
     <hr>
+    {{ request }}
   {% endfor %}
-
 {% endblock content %}
 
 

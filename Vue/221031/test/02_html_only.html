@@ -13,7 +13,13 @@
   </div>
 
   <script>
-   
+   const name = document.querySelector('#name')
+   const inputName = document.querySelector('#inputName')
+
+   inputName.addEventListener('input', function (e) {
+    // console.log(e.target.value)
+    name.innerText = 'name : ' + e.target.value
+   })
   </script>
     
 </body>

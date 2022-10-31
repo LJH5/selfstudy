@@ -9,30 +9,26 @@
 <body>
   <!-- 1. Text interpolation -->
   <div id="app">
-    <p>메시지: {{ msg }}</p>   
-    <p>HTML 메시지 : {{ rawHTML }}</p>
-    <p>HTML 메시지 : <span v-html="rawHTML"></span></p>
-    <p>{{ msg.split('').reverse().join('') }}</p>
+    <p>메시지: {{ msg }}</p>
+    <p>HTML 메시지: {{ rawHTML }}</p>
+    <p>HTML 메시지: <span v-html="rawHTML">여기는 글 적어도 덮어버림</span></p>
   </div>
-  <hr>
+  
   <!-- 2. v-text & v-html -->
   <div id="app2">
     <!-- 2-1. v-text & {{}} -->
     <p v-text="message"></p>
     <!-- 같음 -->
-    <p>{{ message }}</p>
-
+    {{ message }}
     <!-- 2-2. v-html -->
-    <p v-html="html"></p>
-  </div>
-
+    <p v-html="html"></p>  
+    
+  </div>    
   <!-- 3. v-show && v-if -->
   <div id="app3">
-    <p v-show="isActive">보이니? 안보이니?</p>
-    <!-- v-if는 elseif, else을 사용 할 수 있어서 더 많이 사용됨 -->
-    <p v-if="isActive">안보이니? 보이니?</p>
+    <p v-show="isActive">보이니? 안 보이니?</p>
+    <p v-if="isActive">안 보이니? 보이니?</p>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script>
     // 1. Text interpolation
@@ -40,7 +36,7 @@
       el: '#app',
       data: {
         msg: 'Text interpolation',
-        rawHTML: '<span style="color:red"> 빨간 글씨</span>'
+        rawHTML: '<span style="color: red;">빨간 글씨</span>',
       }
     })
 
@@ -49,7 +45,7 @@
       el: '#app2',
       data: {
         message: 'Hello!',
-        html: '<a href="https://www.google.com">GOOGLE</a>'
+        html: '<a href="https://www.google.com">Google</a>'
       }
     })
 
@@ -58,7 +54,6 @@
       el: '#app3',
       data: {
         isActive: false
-        // isActive: true
       }
     })
   </script>

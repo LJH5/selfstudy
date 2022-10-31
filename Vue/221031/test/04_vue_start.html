@@ -21,22 +21,30 @@
   <script>
     // CODE HERE
     // 1. Vue instance constructor
-    const app = new Vue({
+    const vm = new Vue({
+      // 2. el
       el: '#app',
+      // 3. data
       data: {
-        message: 'Hello!!'
+        message: 'Hello'
+      },
+      // 4. methods
+      methods: {
+        print: function () {
+          console.log(this.message)
+        },
+        
+        bye: function () {
+          this.message = 'Bye'
+        },
+        // 4-1. arrow function
+        arrowBye: () => {
+          this.message = 'Arrow Funtion'
+          console.log(this)
+        }
       }
     })
-
-    // 2. el
-    
-      // 3. data
-
-      // 4. methods
-
-        // 4-1. arrow function
-      
-    console.log(app)
+    console.log(vm)
   </script>
 </body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      border: 1px solid black;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .orange {
+      background-color: orange;
+    }
+
+    .yellow {
+      background-color: yellow;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .violet {
+      background-color: violet;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>박스 색상 바꾸기</h1>
+    <h3>색상 : {{ selectedColor }}</h3>
+    <div class="box" :class="selectedColor" @click='randomColorChange'>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        colors : ['red', 'orange', 'yellow', 'green', 'blue', 'violet'],
+        selectedColor : null
+      },
+      methods : {
+        randomColorChange () {
+          this.selectedColor = _.sample(this.colors)
+          console.log(this.selectedColor)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

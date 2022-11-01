@@ -35,7 +35,7 @@
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
 
     forms.forEach((form) => {
-      form.addEventListener('submit', function (event) {
+      form.addEventListener('submit', function () {
         event.preventDefault()
         // onsole.log(event.target.dataset)
 

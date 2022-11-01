@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="app">
+    <p>{{ message }}</p>
+    <button @click="hello">클릭 시 콘솔 찍힘</button>
+    <input type="submit" v-for="(name, index) in names" :key="index" :value="name">
+
+
+    
+  </div>
+  {{ message }}
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  
+  <script>
+    const obj = {
+      el: '.app',
+      data: {
+        message: 'hello',
+        names: ['철수', '영희', '바둑이'],
+      },
+      methods: {
+        hello () {
+          console.log('hello')
+        },
+      },
+    }
+    const app = new Vue(obj)
+
+  </script>
+</body>
+</html>

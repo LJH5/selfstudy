@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="app">
+    <h3>성 입력: {{ lastName }}</h3>
+    <input type="text" @input="onInput">
+
+    <h3>이름 입력: {{ firstName }}</h3>
+    <input type="text" v-model="firstName">
+
+    <h3>methods 결과: {{ getFullName() }}</h3>
+    <h3>computed 결과: {{ combined }}</h3>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const obj = {
+      el: '.app',
+      data: {
+        lastName: '',
+        firstName: '',
+      },
+      methods: {
+        onInput () {
+          this.lastName = event.target.value
+        },
+        getFullName () {
+          return this.lastName + this.firstName
+        }
+      },
+      computed: {
+        combined () {
+          return this.lastName + this.firstName
+        }
+      },
+      watch: {
+        firstName: function () {
+          console.log('전혀 다른 로직을 생성')
+        }
+      },
+    }
+    
+    const app = new Vue(obj)
+  </script>
+</body>
+</html>

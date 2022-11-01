@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>MBTI 검사기</h1>
+    <input type="text" v-model="myType">
+    <button @click="goToResult">결과 보기</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        myType : '',
+        allTypes : ['istj', 'isfj', 'infj', 'intj', 'istp', 'isfp', 'infp', 'intp', 'estp', 'esfp', 'enfp', 'entp', 'estj', 'esfj', 'enfj', 'entj']
+      },
+      methods: {
+        goToResult () {
+          const finalType = this.myType.toLowerCase()
+
+          if (!finalType.trim()) {
+            alert('입력된 타입이 없습니다!')
+            return
+          } else if (!this.allTypes.includes(finalType)) {
+            alert('해당 유형은 존재하지 않습니다!')
+          } else {
+            window.location.href = `https://www.16personalities.com/ko/성격유형-${finalType}`
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

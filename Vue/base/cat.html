@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Cat Image</h1>
+    <div v-if="imgSrc">
+      <img :src="imgSrc" alt="cat">
+    </div>
+    <button @click="getCat">Get Cat</button>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        imgSrc: null,
+      },
+      methods: {
+        getCat: function () {
+          const API_URL = 'https://api.thecatapi.com/v1/images/search'
+          axios.get(API_URL)
+            .then(response => {
+              console.log('=============')
+              console.log('axios 도착~~!! 200!!')
+              this.imgSrc = response.data[0].url
+            })
+        },
+      },
+      created: function () {
+        console.log('=============')
+        console.log('생성됐어요!')
+        this.getCat()
+      },
+      mounted: function () {
+        console.log('=============')
+        console.log('mounted!!')
+      },
+      updated: function () {
+        console.log('==============')
+        console.log('업데이트 됐어요!')
+      }
+    })
+  </script>
+</body>
+</html>

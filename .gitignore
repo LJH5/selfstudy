@@ -1,6 +1,31 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,node,vuejs,django,python,visualstudiocode,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,node,vuejs,django,python,visualstudiocode,pycharm
 
+### Vue ###
+.DS_Store
+node_modules
+/dist
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 ### bat file ###
 push.bat
 pull.bat

@@ -3,7 +3,7 @@ import heapq
 
 
 def dij():
-    dist = [987654321 for _ in range(v + 1)]  # 0번 인덱스 비워둠
+    dist = [987654321 for _ in range(v + 1)]
     dist[start_node] = 0
     q = []
     heapq.heappush(q, (0, start_node))
@@ -20,10 +20,10 @@ def dij():
     return dist
 
 
-v, e = map(int, sys.stdin.readline().split())  # 노드 수, 간선 수
-start_node = int(input())  # 시작 노드 번호
+v, e = map(int, sys.stdin.readline().split())
+start_node = int(input())
 adj = [[] for _ in range(v + 1)]
-for _ in range(e):  # u에서 v로 w 가중치
+for _ in range(e):
     start, end, w = map(int, input().split())
     adj[start].append((w, end))
 

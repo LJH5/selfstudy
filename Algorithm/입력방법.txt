@@ -1,0 +1,9 @@
+import sys, os, io, atexit
+# 입력 최적화
+input = lambda: sys.stdin.readline().rstrip('\r\n')
+# 출력 최적화
+stdout = io.BytesIO()
+sys.stdout.write = lambda s: stdout.write(s.encode("ascii"))
+atexit.register(lambda: os.write(1, stdout.getvalue()))
+# 최대값 대체해서 사용하는 값
+float('inf') # ∞   이제 999999는 안녕

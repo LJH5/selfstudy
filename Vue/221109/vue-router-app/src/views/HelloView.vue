@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>hello, {{ userName }}!!</h1>
+    <h1>hello, {{ userName }}</h1>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
       userName: this.$route.params.userName
     }
   },
-  beforeRouteUpdate(to, from, next) {
+  beforeRouteUpdate(to, form, next) {
     this.userName = to.params.userName
     next()
   }

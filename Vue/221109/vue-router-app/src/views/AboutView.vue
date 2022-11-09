@@ -1,9 +1,9 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <router-link :to="{ name: 'home' }">홈으로 link</router-link>
-    <button @click="toHome">홈으로 methods</button>
-    <input type="text" @keyup.enter="toHello" v-model="inputData">
+    <router-link :to="{ name: 'home' }">Home</router-link>
+    <button @click="toHome">홈으로</button>
+    <input type="text" @keyup.enter="goToHello" v-model="inputData">
   </div>
 </template>
 
@@ -17,11 +17,11 @@ export default {
   },
   methods: {
     toHome() {
-      this.$router.push({name: 'home'})
+      this.$router.push({ name: 'home' })
     },
-    toHello() {
-      this.$router.push({name: 'hello', params: { userName: this.inputData }})
+    goToHello() {
+      this.$router.push({ name: 'hello', params: { userName: this.inputData } })
     },
   }
 }
-</script>2
+</script>

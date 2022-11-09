@@ -1,14 +1,13 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import HelloView from '@/views/HelloView'
-import LoginView from '@/views/LoginView'
-import NotFound404 from '@/views/NotFound404'
+import HelloView from '@/views/HelloView.vue'
+import LoginView from '@/views/LoginView.vue'
+import NotFound404 from '@/views/NotFound404.vue'
+import DogView from '@/views/DogView.vue'
 
 
-Vue.use(VueRouter)
-
-const isLoggedIn = true
+// 로그인 여부
+const isLoggedIn = false
 
 const routes = [
   {
@@ -17,60 +16,71 @@ const routes = [
     component: HomeView
   },
   {
-    // lazy-loding 방식
     path: '/about',
     name: 'about',
-    component: () => import('../views/AboutView.vue')
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
     path: '/hello/:userName',
     name: 'hello',
-    component: HelloView,
+    component: HelloView
   },
   {
-    path: '/login/',
+    path: '/login',
     name: 'login',
     component: LoginView,
-    beforeEnter(to, from, next) {
+    // 특정 route에 가드
+    beforeEnter(to, form, next) {
+      // 로그인 상태로 로그인에 접근
       if (isLoggedIn === true) {
-      console.log('이미 로그인 함')
-      next({ name: 'home' })
+        next({ name: 'home'})
       } else {
-      next()
+        next()
       }
     }
   },
   {
     path: '/404',
     name: 'NotFound404',
-    component: NotFound404,
+    component: NotFound404
+  },
+  {
+    path: '/dog/:breed',
+    name: 'dog',
+    component: DogView
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404'
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
+// // 전역 가드 로그인
 // router.beforeEach((to, from, next) => {
-//  const isLoggedIn = false
-
-// //  const authPages = ['hello']
-//  const allowAllPages = ['login']
-
-// //  const isAuthRequired = authPages.includes(to.name)
-//  const isAuthRequired = !allowAllPages.includes(to.name)
-
-//  if (isAuthRequired && !isLoggedIn) {
-//   console.log('Login으로 이동!')
-//   next({ name: 'login' })
-//  } else {
-//   console.log('to로 이동!')
-//   next()
-//  }
+//   // 로그인이 필요한 페이지
+//   // const authPages = ['hello']
+//   // 로그인이 필요없는 페이지
+//   const allowAllPages = ['login']
+//   // 앞으로 이동할 페이지(to)가 로그인이 필요한 지 확인
+//   // const isAuthRequired = authPages.includes(to.name)
+//   // 앞으로 이동할 페이지(to)가 로그인이 필요없는 지
+//   const isAuthRequired = !allowAllPages.includes(to.name)
+//   if (isAuthRequired && !isLoggedIn) {
+//     next({ name: 'login'})
+//   } else {
+//     next()
+//   }
+//   // console.log('to', to)
+//   // console.log('from', from)
+//   // console.log('next', next)
 // })
-
-
 
 export default router

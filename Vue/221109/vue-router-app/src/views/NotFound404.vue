@@ -1,7 +1,7 @@
 <template>
-  <dir>
+  <div>
     <h1>404 Not Found</h1>
-  </dir>
+  </div>
 </template>
 
 <script>

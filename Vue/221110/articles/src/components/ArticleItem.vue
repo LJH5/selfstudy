@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="goDetail(article.id)">
     <p>글 번호: {{ article.id }}</p>
     <p>제목: {{ article.title }}</p>
     <hr>
@@ -12,6 +12,11 @@ export default {
   props: {
     article: Object
   },
+  methods: {
+    goDetail(id) {
+      this.$router.push({ name: 'detail', params: {id} })
+    }
+  }
 }
 </script>
 

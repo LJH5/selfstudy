@@ -27,6 +27,11 @@ export default new Vuex.Store({
     CREATE_ARTICLE(state, article) {
       state.articles.push(article)
       state.article_id += 1
+    },
+    DELETE_ARTICLE(state, article_id) {
+      state.articles = state.articles.filter((article) => {
+        return !(article.id === article_id)
+      })
     }
   },
   actions: {

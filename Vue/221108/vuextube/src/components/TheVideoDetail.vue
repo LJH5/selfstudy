@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="ratio ratio-16x9">
-      <iframe :src="videoSrc" frameborder="0"></iframe>
+      <iframe :src="videoSrc" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="detail">
       <h4>{{ videoTitle }}</h4>

@@ -32,6 +32,11 @@ export default {
         .catch(err => console.error(err))
       this.$store.dispatch('select', {})
     }
+  },
+  created() {
+    this.query = 'ssafy'
+    this.onSearch()
+    this.query = ''
   }
 }
 </script>

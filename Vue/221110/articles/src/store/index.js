@@ -24,8 +24,23 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
+    CREATE_ARTICLE(state, article) {
+      state.articles.push(article)
+      state.article_id += 1
+    }
   },
   actions: {
+    createArticle(context, payload) {
+      // console.log(context)
+      // console.log(payload)
+      const article = {
+        id: context.state.article_id,
+        title: payload.title,
+        content: payload.content,
+        createdAt: new Date().getTime(),
+      }
+      context.commit('CREATE_ARTICLE', article)
+    }
   },
   modules: {
   }

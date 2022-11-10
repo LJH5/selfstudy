@@ -2,7 +2,7 @@
   <div class="lotto">
     <h1>로또</h1>
     <button @click="getNumber">Get Lucky Numbers</button>
-    <p v-if="lottoNumbersLength">{{ lottoNumbers }}</p>
+    <p v-if="lottoNumbers.length">{{ lottoNumbers }}</p>
   </div>
 </template>
 
@@ -14,14 +14,12 @@ export default {
   data() {
     return {
       lottoNumbers: [],
-      lottoNumbersLength: 0
     }
   },
   methods: {
     getNumber() {
       const nums = _.range(1, 46)
       this.lottoNumbers = _.sampleSize(nums, 6)
-      this.lottoNumbersLength = this.lottoNumbers.length
     }
   },
 }

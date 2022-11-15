@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const CAT_URL = 'https://api.thecatapi.com/v1/images/search'
+    const TODO_URL = 'https://jsonplaceholder.typicode.com/posts/1'
+    const USER_URL = 'https://jsonplaceholder.typicode.com/users/1'
+
+    let userInfo = null
+
+    function getCatImg() {
+      axios.get(CAT_URL)
+        .then(res => {
+          axios.get(USER_URL)
+            .then(res => {
+              // console.log(2, res.data)
+              // console.log(3, userInfo)
+              userInfo = res.data
+              // console.log(4, userInfo)
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
+    // getCatImg()
+    // setTimeout(() => console.log(userInfo), 1000)
+    
+    let infos = null
+
+    async function getCatImg2 () {
+      const catImgData = await axios.get(CAT_URL)
+      const userData = await axios.get(USER_URL)
+      const obj = {
+        catImgData,
+        userData
+      }
+      return obj
+    }
+
+    getCatImg2().then(res=> infos = res)
+    setTimeout(() => console.log(infos), 1000)
+
+  </script>
+  
+</body>
+</html>

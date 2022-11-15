@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const BASE_URL = 'https://api.thecatapi.com/v1/images/search'
+    const BASE_URL2 = 'https://jsonplaceholder.typicode.com/posts/1'
+    
+    // 일반 fetch
+    const getCat = () => {
+      fetch(BASE_URL)
+        .then(response => {
+          // fetch 후에 JSON을 가져오기 때문에 js obj 로 바꾸기 위해서 .json() 필요
+          const fetchResult = response.json() // 이거 .json 하더라도 여전히 Promise 객체 반환
+          // fetch 후 response 객체는 모든 header 도착하자마자 주어지는데, body가 안온 상태의 Promise 객체를 반환함.  
+          console.log(fetchResult) 
+          // 이렇게 안담고 console.log(response.json()) 한번 더 하면 두번 뽑는 셈이라 에러남
+          // TypeError: Failed to execute 'json' on 'Response': body stream already read 
+          return fetchResult
+        })
+        .then (response => console.log(2, response))  // 그래서 한번 더 then 해줘야 진짜 결과
+        .catch(err => console.error(err))
+    }
+
+    getCat()
+
+    // async await fetch
+    async function getCat2() {
+      const fetchResult = await fetch(BASE_URL)
+      if (fetchResult.status === 200) {
+        const data = await fetchResult.json()
+        console.log('최종', data)
+        return data
+      } else {
+        throw new Error('망함')
+      }
+    }
+
+    getCat2()
+
+    // 여러개 axios 보낼때
+    const getCatTodo = async function () {
+      const imgUrl = await axios.get(BASE_URL)
+      // console.log(imgUrl.data[0].url)
+      const toDo = await axios.get(BASE_URL2)
+      // console.log(toDo.data.title)
+
+      const obj = {imgUrl, toDo}
+      return obj
+    }
+
+    getCatTodo().then(res => console.log(res))
+
+  </script>
+</body>
+</html>
+
+
+<!-- https://moneytech.kr/42 -->
+
+<!-- 
+  이런 코드일 때, 일단 return axios 부분 설명
+  // MainApi.js //
+
+  import axios from 'axios'
+  const URL = 'https://api.themoviedb.org/3/movie/top_rated'
+  const API_KEY = process.env.VUE_APP_MY_API_KEY
+
+  export default {
+    getMovieList: function() {
+      return (axios.get(URL, {
+        params: {
+          api_key: API_KEY,
+        }
+      })
+        .then(function (response) {
+          console.log(2, response)
+          return response
+        })
+        .catch(err => console.error(err))
+    )}
+  }
+
+  // MovieView.vue
+
+  <script>
+  import MovieCard from '@/components/MovieCard'
+  import MainApi from '@/api/MainApi.js'
+
+  export default {
+    name: 'MovieView',
+    components: {
+      MovieCard,
+    },
+    methods: {
+      async testf() {
+        const response = await MainApi.getMovieList()
+        console.log(1, response)
+        this.$store.dispatch('getMovieList', response)
+      },
+    },
+    computed: {
+    },
+    created() {
+      this.testf()
+    }
+  }
+
+  </script>
+ -->
+
+ <!-- 
+  async를 함수에 붙이면 그 함수의 리턴값을 무조건 Promise 객체로 만든다.
+  하지만 axios.then으로 인해 리턴 되는 값이 Promise 객체이므로 getMovieList에 async를 붙이지 않아도 마치 async를 붙인 것과 같은 결과이다. 
+  => async getMovieList나 getMovieList나 모두 Promise 객체를 반환
+  그래서 testf() 에서 await MainApi.getMovieList() 이런 형식으로 사용해야 제대로 된 값이 response 변수로 할당된다.
+  만약 testf()에서 await를 빼고 MainApi.getMovieList() 라고만 선언하면 Promise 객체 자체가 response 변수에 할당되므로 console에 Promise 객체가 찍힌다.
+  왜냐면 await는 다음과 같은 성질이 있기 때문이다.
+  await 은 Promise 가 resolve 한 값을 내놓습니다. async 함수 내부에서는 리턴하는 값을 resolve 한 값으로 간주합니다.
+  여기서 resolve는 Promise가 정상적으로 이행할 때 발동하는 콜백함수를 말하고 그 결과가 then에 전달되어 우리가 (response) => {...}처럼 response를 받아 볼 수 있는 것이에요.
+  그래서 await가 Promise가 resolve한 값을 내놓는 거니까 then을 쓰지 않고도 await 키워드가 마치 then을 대신 하는 거죠
+  그래서 async await에서는 catch처럼 에러를 잡지 못해서 try catch라는 다른 문법을 끌어 쓰는 거구요
+  await => 프로미스 값 쉽게 뽑기
+-->
+
+<!-- 
+  https://stackoverflow.com/questions/37555031/why-does-json-return-a-promise
+ -->

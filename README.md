@@ -8,4 +8,5 @@
 
 ## 오늘 할 일
 
-- workshop 끝내기
+- ERD
+- user model

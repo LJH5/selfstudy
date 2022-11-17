@@ -8,5 +8,4 @@
 
 ## 오늘 할 일
 
-- ERD
-- user model
+- ERD(수정)

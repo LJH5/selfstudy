@@ -1,35 +1,32 @@
 # 최대공약수와 최소공배수
 def find_max_divisor(a, b):
-    global divisor
-    max_divisor = 0
-    i = 1
-    while i < max(a, b):
-        print('====')
-        if a % i == 0 and b % i == 0 and max_divisor < i:
-            divisor *= i
-            max_divisor = i
-        i += 1
+    max_divisor = 1
+    divisor = 2
+    while divisor <= a and divisor <= b:
+        if a % divisor == 0 and b % divisor == 0:
+            a //= divisor
+            b //= divisor
+            max_divisor *= divisor
+            continue
+        divisor += 1
     return max_divisor
 
 
-def find_min_multiple(a, b):
-    min_multiple = 9999999
-    global divisor
-    i = 0
-    print('------------')
-    while i < min_multiple:
-        i += divisor
-        print('di', divisor)
-        print('i', i)
-        if find_max_divisor(a, b) == 1:
-            min_multiple = a * b
+def find_min_multiple(a, b, div):
+    min_multiple = a*b
+    start = max(a, b)
+    if div == 1:                # 최대 공약수가 1이면 
+        return min_multiple     # 두 숫자의 곱이 최소 공배수
+    while div < a * b:
+        if start % a == 0 and start % b == 0:
+            min_multiple = start
             break
-        elif i % a == 0 and i % b == 0 and min_multiple > i:
-            min_multiple = i
+        start += div
     return min_multiple
 
 
 num_a, num_b = map(int, input().split())
-divisor = 1
-print(find_max_divisor(num_a, num_b))
-print(find_min_multiple(num_a, num_b))
+max_divisor = find_max_divisor(num_a, num_b)
+min_multiple = find_min_multiple(num_a, num_b, max_divisor)
+print(max_divisor)
+print(min_multiple)

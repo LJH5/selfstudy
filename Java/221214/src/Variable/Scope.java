@@ -30,9 +30,9 @@ class Child extends Parent{
 		String y = "A";
 		
 		System.out.println(x);
-		this.x = x;
+		x = this.x;
 		System.out.println(x);
-		super.x = x;
+		x = super.x;
 		System.out.println(x);
 		
 		System.out.println("================");

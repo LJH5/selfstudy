@@ -5,7 +5,7 @@ public class SpiderManTest {
 	@SuppressWarnings({"deprecation", "unused"})
 	public static void main(String[] args) {
 		int i = 10;
-		SpiderMan sman = new SpiderMan();
+		SpiderMan sman = new SpiderMan("피터 파커", false);
 		
 		sman.eat(); // Person
 		sman.jump(); // Person

@@ -1,13 +1,17 @@
 package person;
 
 public class Person {
-	String name = "피터파커";
+	public String name = "피터파커";
 	
-	void eat() {
+	public Person() {}
+	public Person(String name) {
+		this.name = name;
+	}
+	public void eat() {
 		System.out.println("냠냠");
 	}
 	
-	void jump() {
+	public void jump() {
 		System.out.println("두 다리로 폴짝");
 	}
 	// 조상 클래스에서 toString 메서드 오버라이딩

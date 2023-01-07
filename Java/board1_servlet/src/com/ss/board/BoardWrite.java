@@ -29,7 +29,7 @@ public class BoardWrite extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		1. data get
-		request.setCharacterEncoding("utf-8");	// POST ë°©ì‹ì—ì„œ í•œê¸€ì´ ê¹¨ì§, ì¸ì½”ë”© ì„¤ì • í•´ì•¼ í•¨
+		request.setCharacterEncoding("utf-8");	// POST ¹æ½Ä¿¡¼­ ÇÑ±ÛÀÌ ±úÁü, ÀÎÄÚµù ¼³Á¤ ÇØ¾ß ÇÔ
 		String userId = request.getParameter("userid");
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
@@ -38,7 +38,7 @@ public class BoardWrite extends HttpServlet {
 //		2. logic
 		Connection conn =null;
 		PreparedStatement pstmt = null;
-		int cnt = 0; // ì •ìƒ ì‹¤í–‰ ì—¬ë¶€
+		int cnt = 0; // Á¤»ó ½ÇÇà ¿©ºÎ
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ssafyweb?serverTimezone=UTC", "root", "asdasd123123");
 			StringBuilder sql = new StringBuilder();
@@ -88,33 +88,33 @@ public class BoardWrite extends HttpServlet {
 		out.println("      <div class=\"row justify-content-center\">");
 		out.println("        <div class=\"col-lg-8 col-md-10 col-sm-12\">");
 		out.println("          <h2 class=\"my-3 py-3 shadow-sm bg-light text-center\">");
-		out.println("            <mark class=\"sky\">ê¸€ì“°ê¸° ê²°ê³¼</mark>");
+		out.println("            <mark class=\"sky\">±Û¾²±â °á°ú</mark>");
 		out.println("          </h2>");
 		out.println("        </div>");
 		out.println("        <div class=\"col-lg-8 col-md-10 col-sm-12\">");
 
 		if(cnt != 0) {
-//			ì„±ê³µ
+//			¼º°ø
 			out.println("          <div class=\"card text-center bg-light\">");
-			out.println("            <h2 class=\"fw-bold text-primary pt-3\">ë“±ë¡ ì™„ë£Œ!!!</h2>");
+			out.println("            <h2 class=\"fw-bold text-primary pt-3\">µî·Ï ¿Ï·á!!!</h2>");
 			out.println("            <div class=\"card-body\">");
-			out.println("              <p class=\"card-text\">ê¸€ì‘ì„±ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.</p>");
+			out.println("              <p class=\"card-text\">±ÛÀÛ¼ºÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.</p>");
 			out.println("              <button type=\"button\" id=\"btn-list\" class=\"btn btn-outline-primary\">");
-			out.println("                ê¸€ëª©ë¡ í˜ì´ì§€ ì´ë™...");
+			out.println("                ±Û¸ñ·Ï ÆäÀÌÁö ÀÌµ¿...");
 			out.println("              </button>");
 			out.println("            </div>");
 			out.println("          </div>");
 		} else {
-//			ì‹¤íŒ¨
+//			½ÇÆĞ
 			out.println("          <div class=\"card text-center bg-light\">");
-			out.println("            <h2 class=\"fw-bold text-danger pt-3\">ë“±ë¡ ì‹¤íŒ¨T.T</h2>");
+			out.println("            <h2 class=\"fw-bold text-danger pt-3\">µî·Ï ½ÇÆĞT.T</h2>");
 			out.println("            <div class=\"card-body\">");
 			out.println("              <p class=\"card-text\">");
-			out.println("                ê¸€ì‘ì„±ì— ë¬¸ì œê°€ ìˆìŠµë‹ˆë‹¤. <br />");
-			out.println("                ì ì‹œ í›„ ì‹œë„í•´ì£¼ì„¸ìš”.");
+			out.println("                ±ÛÀÛ¼º¿¡ ¹®Á¦°¡ ÀÖ½À´Ï´Ù. <br />");
+			out.println("                Àá½Ã ÈÄ ½ÃµµÇØÁÖ¼¼¿ä.");
 			out.println("              </p>");
 			out.println("              <button type=\"button\" id=\"btn-list\" class=\"btn btn-outline-danger\">");
-			out.println("                ê¸€ëª©ë¡ í˜ì´ì§€ ì´ë™...");
+			out.println("                ±Û¸ñ·Ï ÆäÀÌÁö ÀÌµ¿...");
 			out.println("              </button>");
 			out.println("            </div>");
 			out.println("          </div>");

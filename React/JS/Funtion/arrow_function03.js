@@ -1,9 +1,10 @@
-const lordify = regularPerson => {
-  console.log(regularPerson.firstname)
-}
 var regularPerson = {
   firstname: '홍',
   lastname: '길동'
+}
+
+const lordify = regularPerson => {
+  console.log(regularPerson.firstname)
 }
 
 lordify(regularPerson)

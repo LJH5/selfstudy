@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolling Banner Javascript Version</title>
+    <link rel="stylesheet" href="./rollingbanner-js.css">
+    <script>
+        //DOM 생성 후
+		var originalID, cloneID; //인터벌 포인터
+        window.addEventListener('DOMContentLoaded', function(){
+
+			//롤링 배너 복제본 생성
+            let roller = document.querySelector('.roller');
+            roller.id = 'roller1';
+
+            let clone = roller.cloneNode(true);
+            clone.id = 'roller2';
+            document.querySelector('.wrap').appendChild(clone); //부착
+
+			//원본, 복제본 배너 위치 지정
+            document.querySelector('#roller1').style.left = '0px';
+            document.querySelector('#roller2').style.left = document.querySelector('.roller ul').offsetWidth+'px';
+
+			//클래스 할당
+            roller.classList.add('original');
+            clone.classList.add('clone');
+
+			//인터벌 메서드로 애니메이션 생성
+            let rollerWidth = document.querySelector('.roller ul').offsetWidth;//회전 배너 너비값
+			let betweenDistance = 1;//이동 크기 - 정수여야 함
+			originalID = window.setInterval(betweenRollCallback, parseInt(1000/100), betweenDistance, document.querySelector('#roller1'));
+			cloneID = window.setInterval(betweenRollCallback, parseInt(1000/100), betweenDistance, document.querySelector('#roller2'));
+
+			//인터벌 애니메이션 함수(공용)
+			function betweenRollCallback(d, roller){
+				let left = parseInt(roller.style.left);
+				roller.style.left = (left - d)+'px';//이동
+				//조건부 위치 리셋
+				if(rollerWidth + (left - d) <= 0){
+					roller.style.left = rollerWidth+'px';
+				}
+			}		
+        });
+    </script>
+</head>
+<body>
+	<div class="container">
+		<div class="rollingbanner">
+			<div class="wrap">
+				<div class="roller">
+					<ul>
+						<li class="kapi">
+							<a href="#">
+								<strong class="name">농수산물(KAPI)</strong>
+								<span class="status down">
+									<span class="num">172.33</span>
+									<span class="rate"><em>-1.41%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="kospi">
+							<a href="#">
+								<strong class="name">코스피</strong>
+								<span class="status down">
+									<span class="num">2,720.39</span>
+									<span class="rate"><em>-2.56%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="kosdaq">
+							<a href="#">
+								<strong class="name">코스닥</strong>
+								<span class="status down">
+									<span class="num">889.44</span>
+									<span class="rate"><em>-2.84%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="USDKRW">
+							<a href="#">
+								<strong class="name">미국(USD)</strong>
+								<span class="status up">
+									<span class="num">1,198.6</span>
+									<span class="rate"><em>+0.21%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="JPYKRW">
+							<a href="#">
+								<strong class="name">일본(JPY100)</strong>
+								<span class="status up">
+									<span class="num">1,052.95</span>
+									<span class="rate"><em>+0.35%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="kospi200">
+							<a href="#">
+								<strong class="name">코스피200</strong>
+								<span class="status down">
+									<span class="num">362.39</span>
+									<span class="rate"><em>-2.4%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="future">
+							<a href="#">
+								<strong class="name">선물</strong>
+								<span class="status down">
+									<span class="num">361</span>
+									<span class="rate"><em>-2.66%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="esg30">
+							<a href="#">
+								<strong class="name">KEDI 30</strong>
+								<span class="status down">
+									<span class="num">2,557.11</span>
+									<span class="rate"><em>-2.27%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="kovax15">
+							<a href="#">
+								<strong class="name">KEDI KOVAX15</strong>
+								<span class="status down">
+									<span class="num">610.56</span>
+									<span class="rate"><em>--0.24%</em></span>
+								</span>
+							</a>
+						</li>
+						<li class="EURKRW">
+							<a href="#">
+								<strong class="name">유로(EUR)</strong>
+								<span class="status up">
+									<span class="num">1,355.85</span>
+									<span class="rate"><em>+0.09%</em></span>
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

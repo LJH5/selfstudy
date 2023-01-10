@@ -1,12 +1,12 @@
-import React, { Suspense, lazy } from 'react';
-import { Route, Switch} from "react-router-dom";
+import React, { Suspense, lazy } from 'react'
+import { Route, Switch } from 'react-router-dom'
 
 function Routes() {
-    const Main = lazy(() => import('../views/Main'));
-    const ArticleList = lazy(() => import('../views/ArticleList'));
-    const Article = lazy(() => import('../views/Article'));
-    const Post = lazy(() => import('../views/Post'));
-    const Control = lazy(() => import('../views/Control'));
+    const Main = lazy(() => import('../views/Main'))
+    const ArticleList = lazy(() => import('../views/ArticleList'))
+    const Article = lazy(() => import('../views/Article'))
+    const Post = lazy(() => import('../views/Post'))
+    const Control = lazy(() => import('../views/Control'))
 
     return (
         <div>
@@ -22,7 +22,7 @@ function Routes() {
                 </Switch>
             </Suspense>
         </div>
-    );
+    )
 }
 
-export default Routes;
+export default Routes

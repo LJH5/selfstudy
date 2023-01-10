@@ -14,10 +14,22 @@ function apiGetBoardList() {
 // api 서버 연결 후 action 호출
 async function asyncGetBoardList() {
   try {
-    const response = await call(apiGetBoard);
+    const response = await call(apiGetBoardList);
     console.log(response)
   } catch(e) {
     console.error(e)
     await put(boardActions.getBoardListFail(e.response))
   }
+}
+
+// action 호출을 감시하는 watch
+async function watchGetBoardList() {
+  while(true) {
+    await take(boardActions.getBoardList)
+    await call(asyncGetBoardList)
+  }
+}
+
+export default async function boardSage() {
+  await all([fork(watchGetBoardList)])
 }

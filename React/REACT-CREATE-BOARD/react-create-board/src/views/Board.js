@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom'
+import { boardActions } from '../slices/boardSlice'
 
 function Board() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(boardActions.getBoardList())
+  }, [dispatch])
   return (
     <div>
       <ul>

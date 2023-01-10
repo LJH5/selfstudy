@@ -14,22 +14,27 @@ function apiGetBoardList() {
 // api 서버 연결 후 action 호출
 async function asyncGetBoardList() {
   try {
-    const response = await call(apiGetBoardList);
-    console.log(response)
+      const response = await call(apiGetBoardList);
+      if (response?.status === 2000) {
+        await put(boardActions.getboardListSuccess(response))
+      } else {
+        await put(boardActions.getBoardListFail(response))
+      }
   } catch(e) {
-    console.error(e)
-    await put(boardActions.getBoardListFail(e.response))
+      console.error(e);
+      await put(boardActions.getBoardListFail(e.response));
   }
 }
 
-// action 호출을 감시하는 watch
+// action 호출을 감시하는 watch 함수
 async function watchGetBoardList() {
   while(true) {
-    await take(boardActions.getBoardList)
-    await call(asyncGetBoardList)
+      await take(boardActions.getBoardList);
+      await call(asyncGetBoardList);
   }
 }
 
-export default async function boardSage() {
-  await all([fork(watchGetBoardList)])
+export default async function boardSaga()
+{
+  await all([fork(watchGetBoardList)]);
 }

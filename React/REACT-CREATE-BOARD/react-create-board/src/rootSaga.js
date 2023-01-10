@@ -1,5 +1,5 @@
 import { map } from 'ramda'
-import { all, fork } from "redux-saga/effects"
+import { all, fork } from 'redux-saga/effects'
 import boardSage from './sagas/boardSaga'
 
 let combineSagas = {}

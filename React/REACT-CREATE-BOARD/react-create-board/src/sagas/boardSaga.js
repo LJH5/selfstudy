@@ -15,7 +15,8 @@ function apiGetBoardList() {
 async function asyncGetBoardList() {
   try {
       const response = await call(apiGetBoardList);
-      if (response?.status === 2000) {
+      console.log(response)
+      if (response?.status === 200) {
         await put(boardActions.getboardListSuccess(response))
       } else {
         await put(boardActions.getBoardListFail(response))

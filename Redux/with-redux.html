@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js" integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="red">
+    <div class="container" id="component_red">
+      <h1>red</h1>
+      <input type="button" value="fire" onclick="change('red')">
+    </div>
+  </div>
+  <div id="blue">
+    <div class="container" id="component_blue">
+      <h1>blue</h1>
+      <input type="button" value="fire" onclick="change('blue')">
+    </div>
+  </div>
+  <script>
+    // reducer 만들기, 매개변수는 state와 action
+    function reducer(state, action) {
+      console.log(state, action)
+      if (state === undefined) {
+        // store 초기화
+        return {color: 'yellow'}
+      }
+      let newState;
+      if (action.type === 'CHANGE_COLOR') {
+        // state 값을 복제하여 사용
+        newState = Object.assign({}, state, {color: action.color})
+      }
+      // redux 모든 정보는 store에 저장되어 있음
+      console.log(action.type, action, state, newState)
+      return newState
+    }
+    // store 만들기
+    let store = Redux.createStore(
+      reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      )
+      // store에 값 getState로 가져오기
+    console.log(store.getState())
+    function red() {
+      let state = store.getState()
+      document.querySelector('#component_red').setAttribute('style', `background-color:${state.color}`)
+    }
+    store.subscribe(red)
+    // 초기 값을 넣기 위해 한 번 호출
+    red()
+
+    function change(color) {
+      // dispatch는 reducer를 호출함
+      store.dispatch({type: 'CHANGE_COLOR', color: color})
+    }
+    
+    function blue() {
+      let state = store.getState()
+      document.querySelector('#component_blue').setAttribute('style', `background-color:${state.color}`)
+    }
+    store.subscribe(blue)
+    // 초기 값을 넣기 위해 한 번 호출
+    blue()
+  </script>
+  <style>
+    .container{
+      border: 5px solid black;
+      padding: 10px;
+    }
+  </style>
+</body>
+</html>

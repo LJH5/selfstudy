@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="red">
+    <div class="container" id="component_red">
+      <h1>red</h1>
+      <input type="button" value="fire" onclick="red()">
+    </div>
+  </div>
+  <div id="green">
+    <div class="container" id="component_green">
+      <h1>green</h1>
+      <input type="button" value="fire" onclick="green()">
+    </div>
+  </div>
+  <script>
+    function red() {
+      document.querySelector('#component_red').setAttribute('style', 'background-color: red')
+      document.querySelector('#component_green').setAttribute('style', 'background-color: red')
+    }
+    function green() {
+      document.querySelector('#component_red').setAttribute('style', 'background-color: green')
+      document.querySelector('#component_green').setAttribute('style', 'background-color: green')
+    }
+  </script>
+  <style>
+    .container{
+      border: 5px solid black;
+      padding: 10px;
+    }
+  </style>
+</body>
+</html>

@@ -1,5 +1,6 @@
 import './App.css';
 import {useState} from 'react';
+import { useInView } from "react-intersection-observer"
 
 function Header(props){
   return <header>
@@ -142,6 +143,10 @@ function App() {
       setMode('READ')
     }}></Update>
   }
+
+  // 무한 스크롤
+  const [ref, inView] = useInView()
+  console.log(inView)
   return (
     <div>
       <Header title="WEB" onChangeMode={()=>{
@@ -161,6 +166,24 @@ function App() {
         </li>
         {contextControl}
       </ul>
+      <div className='s'>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div>sdfsdfsdf</div>
+          <div ref={ref}>여기</div>
+      </div>
     </div>
   );
 }

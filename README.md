@@ -6,5 +6,3 @@
 
 # e.currentTarget.getAttribute('value')
 
-
-# 프로젝트 끝

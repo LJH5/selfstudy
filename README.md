@@ -6,3 +6,4 @@
 
 # e.currentTarget.getAttribute('value')
 
+#ㅂㅐㄱㅈㅜㄴ

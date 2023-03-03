@@ -11,7 +11,7 @@ def paperCheck(start_x, start_y, size):
                         paperCheck(start_x + x * (size // 3), start_y + y * (size // 3), size // 3)     # 종이 순회
                 return
 
-    number_count[paper[r][c]] += 1                          # 같은 숫자로만 이루어져있으면 해당 숫자의 개수 +1
+    number_count[paper[c][r]] += 1                          # 같은 숫자로만 이루어져있으면 해당 숫자의 개수 +1
 
 
 n = int(input())

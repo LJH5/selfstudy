@@ -1,7 +1,1 @@
-# react api 통신
-
-# 무한 스크롤
-
-# 부모자식 컴포넌트 간 함수 호출
-
-# e.currentTarget.getAttribute('value')
+# 1주 5백준  class 3 + 카카오 문제

@@ -5,3 +5,5 @@
     - path_tracking
 
     - mapping
+
+    - a_star

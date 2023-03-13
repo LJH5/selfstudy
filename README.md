@@ -7,3 +7,5 @@
 - mapping
 
 - a_star
+
+- 인지/판단

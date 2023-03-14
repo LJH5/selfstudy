@@ -5,6 +5,7 @@
 - path_tracking
   
   - 충돌시 제어
+  - 경로와 거리 제어
 
 - mapping
 

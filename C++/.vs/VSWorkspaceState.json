@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\namespace"
   ],
+  "SelectedNode": "\\namespace\\namespace.cpp",
   "PreviewInSolutionExplorer": false
 }

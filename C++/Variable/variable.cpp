@@ -12,9 +12,9 @@ unsigned int e = -7;	// 변수가 선언되었으나 음수값이 할당되지 못해 주소값을 반환
 long long f = 7;			// 주로 8바이트로  큰 범위의 변수를 할당
 
 float myFloat{ 3.14f };					// 형변환
-int i1 { (int)myFloat };						// 첫번째
-int i2 { int(myFloat) };						
-int i3{ static_cast<int>(myFloat) };
+int i1 { (int)myFloat };						// 방법 1 (권장 안 함)
+int i2 { int(myFloat) };						// 방법 2 (거의 사용 안 함)
+int i3{ static_cast<int>(myFloat) };  // 방법 3 (권장)
 
 int main() {
 	cout << "a:" << a << "\n";
@@ -22,6 +22,4 @@ int main() {
 	cout << "c:" << c << "\n";
 	cout << "d:" << d << "\n";
 	cout << "e:" << e << "\n";
-
-
 }

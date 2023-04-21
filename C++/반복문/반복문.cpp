@@ -1,5 +1,5 @@
-#include <iostream>
 #include <array>
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -24,10 +24,15 @@ int main() {
 		cout << "This is silly \n";
 	}
 	
-	// 범위 기반 for 문
-	array arr{ 1, 2, 3, 4 };
+	// 범위 기반 for
+	array arr{ 1, 2, 3, 4 };		// C++
 	for (int i : arr) {
-		cout << i << "\n";
+		cout << i << " ";
 	}
-
+	cout << "\n";
+	// 초기자 사용
+	for (array arr{ 5, 6, 7, 8 }; int i : arr) {
+		cout << i << " ";
+	}
+	cout << "\n";
 }

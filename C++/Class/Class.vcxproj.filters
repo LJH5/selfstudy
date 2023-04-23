@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="String.cpp">
+    <ClCompile Include="airline_ticket.cppm">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="class.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

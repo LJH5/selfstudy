@@ -1050,5 +1050,13 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
+### CodeBlocks ###
+# specific to CodeBlocks IDE
+*.layout
+*.depend
+# generated directories
+bin/
+obj/
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,node,vuejs,django,python,visualstudiocode,pycharm
 /.metadata/

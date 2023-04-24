@@ -1,4 +1,4 @@
-// using namespace s// C++20 이전 버전 import <iostream>; 
+// C++20 이전 버전 import <iostream>; 
 #include <iostream>
 #include <format>
 

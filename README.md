@@ -1,1 +1,1 @@
-# selfstudy
+학습용

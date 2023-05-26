@@ -42,5 +42,21 @@ int main()
 	cin >> buf2;
 	cout << buf2 << endl;
 
-	return 0;
+	// 6
+	char buf3[1024];
+	// 입력된 수 만큼 요소를 앞에서 부터 제거함
+	cin.ignore(2);
+
+	cin >> buf3;
+	cout << buf3 << endl;
+
+	// 7
+	char buf4[1024];
+	// 입력된 수 만큼 버퍼에 저장된 요소를 볼 수 있음
+	cout << (char)cin.peek() << endl;
+	cin >> buf4;
+	cout << buf4 << endl;
+
+
+	return 0; 
 }

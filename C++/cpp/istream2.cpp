@@ -57,6 +57,15 @@ int main()
 	cin >> buf4;
 	cout << buf4 << endl;
 
+	char buf5[1024];
+	cin >> buf5;
+	coug << buf5 << endl;
+
+	// cin의 마지막 요소를 다시 버퍼에 넣음
+	cin.unget();
+
+	cin >> buf5;
+	cout << buf5 << endl;
 
 	return 0; 
 }

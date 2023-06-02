@@ -1,13 +1,21 @@
-#include <iostream>
+#include<iostream>
+#include <array>
 
 using namespace std;
 
-int main(void)
+struct S
 {
-	int a, b;
-	cin >> a;
-	cin >> b;
-	cout << a + b << endl;
+	int a, b, c, d;
+};
 
-	return 0;
+S getStruct()
+{
+	S my_s{ 1, 2, 3, 4 };
+}
+
+int main() 
+{
+	S my_s = getStruct();
+	my_s.b;
+
 }

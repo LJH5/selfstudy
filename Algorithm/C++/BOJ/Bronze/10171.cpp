@@ -5,14 +5,10 @@ int main(void) {
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, x;
-	cin >> n >> x;
-	for (int i = 0; i < n; i++) {
-		int num;
-		cin >> num;
-		if (num < x)
-			cout << num << " ";
-	}
+	cout << "\\    /\\" << "\n";
+	cout << " )  ( ')" << "\n";
+	cout << "(  /  )" << "\n";
+	cout << " \\(__)|" << "\n";
 
 	return 0;
 }

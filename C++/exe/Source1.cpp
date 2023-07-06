@@ -1,18 +1,27 @@
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-void func(vector<int>& v) {
-	v[4] = 10;
-	v.push_back(7);	// vector의 맨 뒤에  값 추가
-}
-
 int main(void) {
-	vector<int> v(10);
-	func(v);
-	cout << v.size() << "\n";
-	cout << v.back();	// vector의 마지막 요소 출력
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+
+	cout << "1차원 배열 \n";
+	int arr[5] = { 1, 2, 3, 4, 5 };
+	for (auto i : arr) {
+		cout << i << " ";
+	}
+	cout << "\n\n";
+
+	cout << "2차원 배열 \n";
+	int matrix[3][3] = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+	for (const auto& row : matrix) {
+		for (const auto& col : row) {
+			cout << col << " ";
+		}
+		cout << "\n";
+	}
+
+	// 방법1 memset
 
 	return 0;
 }

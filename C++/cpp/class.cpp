@@ -1,5 +1,0 @@
-#include <human>
-
-void main() {
-
-}
